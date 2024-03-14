@@ -240,6 +240,7 @@ button.accent {
 }
 
 
+
 @media screen and (max-width: 730px) {
 
     .chat-container {
@@ -284,4 +285,21 @@ button.accent {
     .chat-header h2 {
         font-size: 1.1em;
     }
+}
+
+#messageArea::-webkit-scrollbar {
+    width: 10px; /* Adjust scrollbar width */
+}
+
+#messageArea::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track background color */
+}
+
+#messageArea::-webkit-scrollbar-thumb {
+    background: #888; /* Scroll thumb color */
+    border-radius: 5px; /* Roundness of the scroll thumb */
+}
+
+#messageArea::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Scroll thumb color on hover */
 }

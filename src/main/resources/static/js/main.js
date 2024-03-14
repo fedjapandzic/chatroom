@@ -2,6 +2,7 @@
 
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
+var onlineList = document.querySelector('#online-list');
 var usernameForm = document.querySelector('#usernameForm');
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
@@ -19,9 +20,10 @@ var colors = [
 function connect(event) {
     username = "User_" + Math.floor(Math.random() * 10000);
 
-    if(username) {
+    if (username) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
+        onlineList.classList.remove('hidden');
 
         var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
@@ -36,13 +38,33 @@ function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
 
+    // Subscribe to the Online Users Topic
+    stompClient.subscribe('/topic/onlineUsers', onOnlineUsersReceived);
+
     // Tell your username to the server
     stompClient.send("/app/chat.addUser",
         {},
-        JSON.stringify({sender: username, type: 'JOIN'})
+        JSON.stringify({ sender: username, type: 'JOIN' })
     )
 
     connectingElement.classList.add('hidden');
+}
+
+function onOnlineUsersReceived(payload) {
+    var onlineUsers = JSON.parse(payload.body);
+    var onlineListElement = document.querySelector('#online-list-to-load');
+
+    // Clear the current list
+    onlineListElement.innerHTML = '';
+
+    // Add each user to the list
+    onlineUsers.forEach(function (user) {
+        var userElement = document.createElement('li');
+        userElement.classList.add('list-group-item');
+        userElement.classList.add('list-group-item-action');
+        userElement.textContent = user;
+        onlineListElement.appendChild(userElement);
+    });
 }
 
 
@@ -54,7 +76,7 @@ function onError(error) {
 
 function sendMessage(event) {
     var messageContent = messageInput.value.trim();
-    if(messageContent && stompClient) {
+    if (messageContent && stompClient) {
         var chatMessage = {
             sender: username,
             content: messageInput.value,
@@ -72,7 +94,7 @@ function onMessageReceived(payload) {
 
     var messageElement = document.createElement('li');
 
-    if(message.type === 'JOIN') {
+    if (message.type === 'JOIN') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' joined!';
     } else if (message.type === 'LEAVE') {
