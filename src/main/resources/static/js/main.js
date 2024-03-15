@@ -2,7 +2,6 @@
 
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
-var onlineList = document.querySelector('#online-list');
 var usernameForm = document.querySelector('#usernameForm');
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
@@ -23,7 +22,6 @@ function connect(event) {
     if (username) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
-        onlineList.classList.remove('hidden');
 
         var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
