@@ -2,7 +2,6 @@
 
 var usernamePage = document.querySelector('#username-page');
 var mainPage = document.querySelector('#main-page');
-var onlineListToLoad = document.querySelector.apply('#online-list-to-load');
 var usernameForm = document.querySelector('#usernameForm');
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
@@ -51,23 +50,28 @@ function onConnected() {
 
 function onOnlineUsersReceived(payload) {
     var onlineUsers = JSON.parse(payload.body);
+    var onlineListToLoad = document.querySelector('#testnigi');
+
+    onlineListToLoad.innerHTML = '';
 
 
     // Add each user to the list
     onlineUsers.forEach(function (user) {
-        var userElement = '<a href="#" class="list-group-item list-group-item-action border-0">' +
-            '<div class="badge bg-success float-right">5</div>' +
+        console.log(user)
+        var userElement = '<li>' +
+            '<a href="#" class="list-group-item list-group-item-action border-0">' +
             '<div class="d-flex align-items-start">' +
             '<img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1"' +
             'alt="Vanessa Tucker" width="40" height="40">' +
             '<div class="flex-grow-1 ml-3">' +
-            'Vanessa Tucker' +
+            user +
             '<div class="small"><span class="fas fa-circle chat-online"></span> Online</div>' +
             '</div>' +
             '</div>' +
-            '</a>';
+            '</a>' +
+            '</li>';
         // userElement.textContent = user;
-        onlineListToLoad.innerHTML = userElement;
+        onlineListToLoad.innerHTML += userElement;
     });
 }
 
