@@ -47,14 +47,23 @@ The application is deployed and accessible at [https://chatroom-dk7c.onrender.co
 
 ## Future Development
 
-Consider the following enhancements to expand the application's functionality:
-
 - Implement private messaging.
 - Add user authentication and registration.
 - Persist messages and user sessions through a database.
 - Enhance the UI with modern frameworks like React or Vue.js.
 
+## Investigation and Key Findings
+
+In developing the chat application, key technologies were investigated to enable efficient real-time communication:
+
+- **WebSockets**: Chosen for real-time, bi-directional communication between clients and servers, reducing latency significantly compared to traditional HTTP polling.
+
+- **STOMP (Simple Text Oriented Messaging Protocol)**: Utilized atop WebSockets for its simplicity and flexibility in message exchange, improving message structure and operations like send, subscribe, and receive.
+
+- **Spring Framework's WebSocket support**: Simplifies WebSocket communication and STOMP messaging integration, enhancing message handling and efficient broadcasting to connected clients.
+
 ## Conclusion
 
 This document covers the setup, structure, and deployment of the Spring Boot WebSocket Chat Application. The application demonstrates the use of WebSockets in Spring Boot for real-time messaging. Docker support simplifies deployment across different environments, ensuring consistency and ease of use.
+
 
