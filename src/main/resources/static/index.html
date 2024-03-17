@@ -18,7 +18,7 @@
       <h1 class="title">Press "Start Chatting" to enter the Chatroom</h1>
       <form id="usernameForm" name="usernameForm">
         <div class="form-group">
-          <button type="submit" class="accent username-submit">Start Chatting</button>
+          <button type="submit" class="btn btn-creamy">Start Chatting</button>
         </div>
       </form>
     </div>
@@ -29,69 +29,19 @@
 
     <div class="container p-0">
 
-      <h1 class="h3 mb-3">Messages</h1>
+      <h1 class="h3 mb-3">Users</h1>
 
       <div class="card">
         <div class="row g-0">
-          <div id="online-list-to-load" class="col-12 col-lg-5 col-xl-3 border-right">
-            <ul id="testnigi">
+          <div class="col-12 col-lg-5 col-xl-3 border-right">
+            <ul id="list-of-users">
 
             </ul>
-
-            <!-- <div class="px-4 d-none d-md-block">
-              <div class="d-flex align-items-center">
-                <div class="flex-grow-1">
-                  <input type="text" class="form-control my-3" placeholder="Search...">
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <a href="#" class="list-group-item list-group-item-action border-0">
-              <div class="badge bg-success float-right">5</div>
-              <div class="d-flex align-items-start">
-                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1"
-                  alt="Vanessa Tucker" width="40" height="40">
-                <div class="flex-grow-1 ml-3">
-                  Vanessa Tucker
-                  <div class="small"><span class="fas fa-circle chat-online"></span> Online</div>
-                </div>
-              </div>
-            </a> -->
-            <!-- <a href="#" class="list-group-item list-group-item-action border-0">
-              <div class="d-flex align-items-start">
-                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1"
-                  alt="Sharon Lessman" width="40" height="40">
-                <div class="flex-grow-1 ml-3">
-                  Sharon Lessman
-                  <div class="small"><span class="fas fa-circle chat-online"></span> Online</div>
-                </div>
-              </div>
-            </a> -->
-            <!-- <a href="#" class="list-group-item list-group-item-action border-0">
-              <div class="d-flex align-items-start">
-                <img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="rounded-circle mr-1"
-                  alt="Christina Mason" width="40" height="40">
-                <div class="flex-grow-1 ml-3">
-                  Christina Mason
-                  <div class="small"><span class="fas fa-circle chat-offline"></span> Offline</div>
-                </div>
-              </div>
-            </a> -->
-
             <hr class="d-block d-lg-none mt-1 mb-0">
           </div>
           <div class="col-12 col-lg-7 col-xl-9">
-            <div class="py-2 px-4 border-bottom d-none d-lg-block">
-              <div class="d-flex align-items-center py-1">
-                <div class="position-relative">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1"
-                    alt="Sharon Lessman" width="40" height="40">
-                </div>
-                <div class="flex-grow-1 pl-3">
-                  <strong>Sharon Lessman</strong>
-                  <div class="text-muted small"><em>Typing...</em></div>
-                </div>
-              </div>
+            <div id="username-display" class="py-2 px-4 border-bottom d-none d-lg-block">
+
             </div>
 
             <div class="position-relative">
@@ -113,77 +63,18 @@
                       <div class="input-group clearfix">
                         <input type="text" id="message" placeholder="Type a message..." autocomplete="off"
                           class="form-control" />
-                        <button type="submit" class="primary">Send</button>
+                        <button type="submit" class="btn btn-creamy">Send</button>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
-
-
             </div>
-
-
           </div>
         </div>
       </div>
     </div>
   </main>
-
-  <!-- <div id="username-page">
-    <div class="username-page-container">
-      <h1 class="title">Press "Start Chatting" to enter the Chatroom</h1>
-      <form id="usernameForm" name="usernameForm">
-        <div class="form-group">
-          <button type="submit" class="accent username-submit">Start Chatting</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-1"></div>
-
-    <div id="online-list" class="col-3 pt-4 hidden">
-      <div class="list-group d-flex justify-content-center" id="list-tab" role="tablist">
-        <li class="list-group-item list-group-item-action" data-toggle="list" href="#list-item" role="tab">ONLINE
-          USERS <i class="fa fa-circle" aria-hidden="true" style="color: green;"></i>
-        </li>
-      </div>
-      <div id="online-list-to-load" class="list-group" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-item" role="tab">Home</a>
-      </div>
-
-    </div>
-    <div class="col-8">
-      <div id="chat-page" class="hidden">
-        <div class="chat-container">
-          <div class="chat-header">
-            <h2>Public Chat</h2>
-          </div>
-          <div class="connecting">
-            Connecting...
-          </div>
-          <ul id="messageArea">
-
-          </ul>
-          <form id="messageForm" name="messageForm">
-            <div class="form-group">
-              <div class="input-group clearfix">
-                <input type="text" id="message" placeholder="Type a message..." autocomplete="off"
-                  class="form-control" />
-                <button type="submit" class="primary">Send</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </div> -->
-
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>

@@ -18,11 +18,21 @@ var colors = [
 
 function connect(event) {
     username = "User_" + Math.floor(Math.random() * 10000);
+    var usernameDisplay = document.querySelector('#username-display');
 
     if (username) {
         usernamePage.classList.add('hidden');
         mainPage.classList.remove('hidden');
 
+        var usernameDisplayElement = '<div class="d-flex align-items-center py-1">' +
+            '<div class="position-relative">' +
+            '</div>' +
+            '<div class="flex-grow-1 pl-3">' +
+            '<strong> Your username:' + username + '</strong>' +
+            '</div>' +
+            '</div>';
+
+        usernameDisplay.innerHTML = usernameDisplayElement;
         var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
 
@@ -50,9 +60,9 @@ function onConnected() {
 
 function onOnlineUsersReceived(payload) {
     var onlineUsers = JSON.parse(payload.body);
-    var onlineListToLoad = document.querySelector('#testnigi');
+    var listOfUsers = document.querySelector('#list-of-users');
 
-    onlineListToLoad.innerHTML = '';
+    listOfUsers.innerHTML = '';
 
 
     // Add each user to the list
@@ -71,7 +81,7 @@ function onOnlineUsersReceived(payload) {
             '</a>' +
             '</li>';
         // userElement.textContent = user;
-        onlineListToLoad.innerHTML += userElement;
+        listOfUsers.innerHTML += userElement;
     });
 }
 
