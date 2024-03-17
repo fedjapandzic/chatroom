@@ -1,10 +1,9 @@
-# Use Maven to build the application
+# Use Maven
 FROM maven:3.8.4-openjdk-17 as builder
 WORKDIR /app
 COPY pom.xml .
 COPY src src
-# Build the application and skip tests to speed up the build process
-# Remove '-DskipTests' if you want to run tests
+# Build app and skip tests
 RUN mvn clean package -DskipTests
 
 # Use OpenJDK for the runtime
