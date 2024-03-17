@@ -1,96 +1,64 @@
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+body{
+    margin-top:20px;
+    display: grid;
 }
 
-html,body {
-    height: 100%;
-    overflow: hidden;
+.chat-online {
+    color: #34ce57
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-weight: 400;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1rem;
-    line-height: 1.58;
-    color: #333;
-    background-color: #f4f4f4;
-    height: 100%;
+.chat-offline {
+    color: #e4606d
 }
 
-.clearfix:after {
-    display: block;
-    content: "";
-    clear: both;
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    overflow-y: scroll
 }
 
-.hidden {
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0
+}
+
+.chat-message-left {
+    margin-right: auto
+}
+
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+}
+.py-3 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.px-4 {
+    padding-right: 1.5rem!important;
+    padding-left: 1.5rem!important;
+}
+.flex-grow-0 {
+    flex-grow: 0!important;
+}
+.border-top {
+    border-top: 1px solid #dee2e6!important;
+}
+
+.custom-chat-box {
+    padding: 20px;
+    border: 2px solid #000;
+    text-align: center;
+    background-color: #fff;
+    justify-content: center;
+    display: flex;
+    justify-self: center;
+  }
+
+  .hidden {
     display: none;
-}
-
-.form-control {
-    width: 100%;
-    min-height: 38px;
-    font-size: 15px;
-    border: 1px solid #c8c8c8;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-input {
-    padding-left: 10px;
-    outline: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 1.7em;
-}
-
-a {
-    color: #6db33f;
-}
-
-button {
-    box-shadow: none;
-    border: 1px solid transparent;
-    font-size: 14px;
-    outline: none;
-    line-height: 100%;
-    white-space: nowrap;
-    vertical-align: middle;
-    padding: 0.6rem 1rem;
-    border-radius: 2px;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    min-height: 38px;
-}
-
-button.default {
-    background-color: #e8e8e8;
-    color: #333;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-}
-
-button.primary {
-    background-color: #6db33f;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-    color: #fff;
-}
-
-button.accent {
-    background-color: #6db33f;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-    color: #fff;
 }
 
 #username-page {
@@ -120,7 +88,15 @@ button.accent {
 .username-page-container .username-submit {
     margin-top: 10px;
 }
+.form-group {
+    margin-bottom: 15px;
+}
 
+button.accent {
+    background-color: #6db33f;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+}
 
 #chat-page {
     position: relative;
@@ -128,11 +104,13 @@ button.accent {
 }
 
 .chat-container {
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
+    margin-top: 30px;
     height: calc(100% - 60px);
-    max-height: 600px;
+    max-height: 700px;
     position: relative;
 }
 
@@ -236,7 +214,38 @@ button.accent {
     width: 100%;
 }
 
+#messageArea {
+    list-style-type: none;
+    background-color: #FFF;
+    margin: 0;
+    overflow-y: auto;
+    padding: 0 20px 0px 20px;
+    height: auto;
+    max-height: 500px;
+}
 
+.btn {
+    cursor: pointer;
+    padding: 8px 20px;
+    outline: none;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    border-radius: 25px;
+    font-family: "Inter", sans-serif;
+    width: 200px;
+  }
+  
+  .btn:hover {
+    background-color: #269714;
+    box-shadow: none;
+    transition: all 0.5s;
+  }
+
+  .btn-creamy {
+    background-color: #36e11b;
+  }
 
 @media screen and (max-width: 730px) {
 

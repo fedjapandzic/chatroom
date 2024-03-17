@@ -1,8 +1,7 @@
 'use strict';
 
 var usernamePage = document.querySelector('#username-page');
-var chatPage = document.querySelector('#chat-page');
-var onlineList = document.querySelector('#online-list');
+var mainPage = document.querySelector('#main-page');
 var usernameForm = document.querySelector('#usernameForm');
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
@@ -19,12 +18,21 @@ var colors = [
 
 function connect(event) {
     username = "User_" + Math.floor(Math.random() * 10000);
+    var usernameDisplay = document.querySelector('#username-display');
 
     if (username) {
         usernamePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
-        onlineList.classList.remove('hidden');
+        mainPage.classList.remove('hidden');
 
+        var usernameDisplayElement = '<div class="d-flex align-items-center py-1">' +
+            '<div class="position-relative">' +
+            '</div>' +
+            '<div class="flex-grow-1 pl-3">' +
+            '<strong> Your username:' + username + '</strong>' +
+            '</div>' +
+            '</div>';
+
+        usernameDisplay.innerHTML = usernameDisplayElement;
         var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
 
@@ -52,18 +60,28 @@ function onConnected() {
 
 function onOnlineUsersReceived(payload) {
     var onlineUsers = JSON.parse(payload.body);
-    var onlineListElement = document.querySelector('#online-list-to-load');
+    var listOfUsers = document.querySelector('#list-of-users');
 
-    // Clear the current list
-    onlineListElement.innerHTML = '';
+    listOfUsers.innerHTML = '';
+
 
     // Add each user to the list
     onlineUsers.forEach(function (user) {
-        var userElement = document.createElement('li');
-        userElement.classList.add('list-group-item');
-        userElement.classList.add('list-group-item-action');
-        userElement.textContent = user;
-        onlineListElement.appendChild(userElement);
+        console.log(user)
+        var userElement = '<li>' +
+            '<a href="#" class="list-group-item list-group-item-action border-0">' +
+            '<div class="d-flex align-items-start">' +
+            '<img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1"' +
+            'alt="Vanessa Tucker" width="40" height="40">' +
+            '<div class="flex-grow-1 ml-3">' +
+            user +
+            '<div class="small"><span class="fas fa-circle chat-online"></span> Online</div>' +
+            '</div>' +
+            '</div>' +
+            '</a>' +
+            '</li>';
+        // userElement.textContent = user;
+        listOfUsers.innerHTML += userElement;
     });
 }
 
